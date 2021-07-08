@@ -1,0 +1,102 @@
+//.auth-wrapper {
+//  background-color: #eee;
+//  .ant-card-head {
+//    border-bottom: none;
+//  }
+//  .ant-form-item-explain {
+//    font-size: 12px;
+//  }
+//}
+//
+//.login-form {
+//  width: 300px;
+//}
+//
+//.login-form-margin, .login-form .ant-alert {
+//  margin-bottom: 8px;
+//}
+//
+//.login-form-button {
+//  width: 100%;
+//}
+//
+.auth-wrapper {
+  position: relative;
+  overflow: hidden;
+  min-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+//
+//.header-wrapper {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  i {
+//    color: #0ff;
+//    font-size: 22px;
+//    margin-right: 8px;
+//  }
+//}
+
+.auth-bg { // circles on bg
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  .r {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+
+
+    &:first-child {
+      top: -100px;
+      right: -100px;
+      //background: #f00; //$theme-color;
+    }
+
+    &:last-child {
+      left: -100px;
+      bottom: -100px;
+      //background: #0f0;//$theme-color2;
+
+    }
+
+    &.s {
+      width: 20px;
+      height: 20px;
+      &:nth-child(2) {
+        top: 150px;
+        right: -150px;
+        //background: #00f;  //$primary-color;
+      }
+
+      &:nth-child(3) {
+        left: -150px;
+        bottom: 150px;
+        //background: #0ff; //$success-color;
+      }
+    }
+
+    &:nth-child(odd) {
+      animation: floating 7s infinite;
+    }
+
+    &:nth-child(even) {
+      animation: floating 9s infinite;
+    }
+  }
+}
+
+@keyframes floating { // for animating circles in bg
+  from {
+    transform: rotate(0deg) translate(-10px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg) translate(-10px) rotate(-360deg);
+  }
+}

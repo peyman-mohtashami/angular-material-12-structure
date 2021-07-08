@@ -1,0 +1,167 @@
+@use '~@angular/material' as mat;
+@include mat.core();
+
+$my-dark-primary: mat.define-palette(mat.$orange-palette);
+$my-light-primary: mat.define-palette(mat.$red-palette, 500);
+
+$my-dark-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$my-light-accent: mat.define-palette(mat.$cyan-palette, A200, A100, A400);
+
+$my-dark-warn: mat.define-palette(mat.$red-palette);
+$my-light-warn: mat.define-palette(mat.$red-palette);
+
+//$my-bg-dark: mat.define-palette(mat.$brown-palette);
+$my-background-dark-color: mat.get-color-from-palette(mat.$brown-palette, 500, 1);
+
+//$my-bg-light: mat.define-palette(mat.$yellow-palette);
+$my-background-light-color: mat.get-color-from-palette(mat.$gray-palette, 100, 0.2);
+
+//$my-light-theme: mat.define-light-theme($my-light-primary, $my-light-accent, $my-light-warn);
+//
+//$kids-typography: mat.define-typography-config(
+//  // Specify "Comic Sans" as the default font family for all levels.
+//  $font-family: 'Akaya Kanadaka',
+//);
+
+$my-light-theme: mat.define-light-theme((
+  color: (
+    primary: $my-light-primary,
+    accent: $my-light-accent,
+    warn: $my-light-warn,
+  ),
+  //typography: $kids-typography
+));
+
+$my-custom-typography: mat.define-typography-config(
+  //$font-family: 'Akaya Kanadaka',
+  $font-family: 'Inter Variable', // 'IRANSansX', //
+  // $headline:  mat.define-typography-level(3rem, 1, 700),
+);
+
+@include mat.core($my-custom-typography);
+
+$my-dark-theme: mat.define-dark-theme($my-dark-primary, $my-dark-accent, $my-dark-warn);
+
+//$my-dark-theme: mat.define-dark-theme((
+//  color: (
+//    primary: $my-dark-primary,
+//    accent: $my-dark-accent,
+//    warn: $my-dark-warn
+//  )
+//));
+
+$my-background-dark: map-get($my-dark-theme, background);
+$my-background-dark: map-merge($my-background-dark, (background: $my-background-dark-color));
+$my-dark-theme: map-merge($my-dark-theme, (background: $my-background-dark));
+
+$my-background-light: map-get($my-light-theme, background);
+$my-background-light: map-merge($my-background-light, (background: $my-background-light-color));
+$my-light-theme: map-merge($my-light-theme, (background: $my-background-light));
+
+//@include mat.all-component-themes($my-light-theme);
+//@include mat.core-theme($my-light-theme);
+@include mat.all-component-themes($my-light-theme);
+//@include mat.card-theme($my-light-theme);
+//@include mat.sidenav-theme($my-dark-theme);
+//.my-light-theme {
+//  @include mat.core-color($my-light-theme);
+//  @include mat.button-color($my-light-theme);
+//}
+//
+//.my-dark-theme {
+//  @include mat.core-color($my-dark-theme);
+//  @include mat.button-color($my-dark-theme);
+//}
+
+$my-palette: mat.define-palette(mat.$indigo-palette);
+
+//$color-config: mat.get-color-config($my-dark-theme);
+//$primary-palette: map-get($color-config, 'background');
+$color-config: mat.get-color-config($my-light-theme);
+$primary-palette: map-get($color-config, 'primary');
+.my-custom-style {
+  //@include mat.core-color($my-dark-theme);
+  @include mat.all-component-themes($my-dark-theme);
+  //@include mat.tree-theme($my-dark-theme);
+  //@include mat.button-color($my-dark-theme);
+  background-color: #424242; // $my-background-dark-color; //mat.get-color-from-palette($primary-palette, 500); //mat-color($dark-background-palette, app-bar); //mat-color($my-dark-theme, background); // #f00; //mat.get-color-from-palette($my-palette, '500');
+  color: #aaa; //mat.get-color-from-palette($my-palette, '500-contrast');
+
+  //$color-config: mat.get-color-config($my-light-theme);
+  //$primary-palette: map-get($color-config, 'primary');
+  .primary{
+    color: mat.get-color-from-palette($primary-palette, 500);
+  }
+  .accent{
+    //color: #00f;
+  }
+}
+
+.auth-bg {
+  .r {
+    &:first-child {
+      background: mat.get-color-from-palette($primary-palette, 500); //#f00;
+    }
+    &:last-child {
+      background: mat.get-color-from-palette($primary-palette, 300); //#0f0;
+    }
+    &.s {
+      &:nth-child(2) {
+        background: mat.get-color-from-palette($primary-palette, 100); //#00f;
+      }
+      &:nth-child(3) {
+        background: mat.get-color-from-palette($primary-palette, 700); //#0ff;
+      }
+    }
+  }
+}
+
+//.active-btn {
+//  $color-config: mat.get-color-config($my-light-theme);
+//  $primary-palette: map-get($color-config, 'primary');
+//  // color: #fff !important; //
+//  background-color: rgba(#fff, 0.3) !important; // mat.get-color-from-palette($primary-palette, 500, 1) !important; //blue;
+//
+//}
+/*
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+//@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$primary: mat.define-palette(mat.$red-palette); // , A600, A400, A900);
+$accent: mat.define-palette(mat.$blue-palette); //, A500, A200, A700);
+$background-color: mat.get-color-from-palette(mat.$red-palette, A100, 0.5);
+
+// The warn palette is optional (defaults to red).
+$warn: mat.define-palette(mat.$orange-palette);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat.define-light-theme($primary, $accent, $warn);
+//$theme: mat.define-light-theme((
+//  color: (
+//    primary: $primary,
+//    accent: $accent,
+//    warn: $warn
+//  )
+//));
+// Insert custom background color
+$background: map-get($theme, background);
+$background: map-merge($background, (background: $background-color));
+$theme: map-merge($theme, (background: $background));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($theme);
+//
+//@include angular-material-theme($theme);
+//@include my-app-theme($theme);
+*/
+@import "general";
+
+
+

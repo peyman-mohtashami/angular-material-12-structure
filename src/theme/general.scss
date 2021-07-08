@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "Inter Variable";
+  src: url("../assets/fonts/Inter.var.woff2") format("woff2");
+  font-weight: 100 900;
+}
+
+//@font-face {
+//  font-family: IRANSansX;
+//  font-style: normal;
+//  font-weight: 700;
+//  src: url('../assets/fonts/woff/IRANSansX-bold.woff') format('woff'),
+//  url('../assets/fonts/woff2/IRANSansX-bold.woff2') format('woff2');
+//}
+//
+//@font-face {
+//  font-family: IRANSansX;
+//  font-style: normal;
+//  font-weight: 400;
+//  src: url('../assets/fonts/woff/IRANSansX-regular.woff') format('woff'),
+//  url('../assets/fonts/woff2/IRANSansX-regular.woff2') format('woff2');
+//}
+
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: "Inter Variable", sans-serif; // "IRANSansX",
+  //-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  //font-family: "Inter", Roboto, "Helvetica Neue", sans-serif;
+  //font-kerning: auto;
+  -webkit-font-smoothing: subpixel-antialiased;
+  //text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "salt", "frac";
+  -webkit-font-feature-settings: "salt", "frac";
+  //-ms-font-feature-settings: "frac";
+  font-feature-settings: "salt", "frac";
+
+}
+
+.mat-button.full-width{
+  width: 100%;
+  text-align: initial;
+  //background-color: red;
+  .mat-button-wrapper{
+    //background-color: aqua;
+    width: 100%;
+    display: flex;
+    text-align: initial;
+    align-items: center;
+  }
+}
+
+//.active-btn {
+//  background-color: rgba(#fff, 0.3);
+//}

@@ -1,0 +1,97 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav my-custom-style" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <div class="logo"></div>
+    <app-sidebar-nav-collapsable></app-sidebar-nav-collapsable>
+<!--    <app-sidebar-nav></app-sidebar-nav>-->
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar">
+      <mat-toolbar-row>
+        <button mat-icon-button class="toolbar-icon" aria-label="icon-button with menu icon" (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span *ngIf="isHandset$ | async" class="toolbar-spacer"></span>
+        <span>My App {{'test' | i18next }}</span>
+        <span class="toolbar-spacer"></span>
+        <ng-container *ngIf="!(isHandset$ | async)">
+          <ng-container *ngTemplateOutlet="actionsTemplate"></ng-container>
+        </ng-container>
+        <button mat-icon-button *ngIf="isHandset$ | async" class="toolbar-icon" aria-label="icon-button with menu icon" (click)="toggleToolbarActions()">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </mat-toolbar-row>
+
+      <mat-toolbar-row *ngIf="actionsToolbar && (isHandset$ | async)" >
+        <span class="toolbar-spacer"></span>
+        <ng-container *ngTemplateOutlet="actionsTemplate"></ng-container>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<ng-template #actionsTemplate>
+  <button mat-icon-button class="toolbar-icon" aria-label="icon-button with share icon">
+    <mat-icon fontSet="material-icons-outlined">search</mat-icon>
+  </button>
+  <button mat-icon-button class="toolbar-icon" aria-label="icon-button with share icon">
+    <mat-icon fontSet="material-icons-outlined">fullscreen</mat-icon>
+  </button>
+  <button mat-icon-button class="toolbar-icon" aria-label="icon-button with share icon">
+    <mat-icon fontSet="material-icons-outlined">messages</mat-icon>
+  </button>
+  <!--  <button mat-icon-button class="toolbar-icon" aria-label="icon-button with share icon">-->
+  <!--    <mat-icon fontSet="material-icons-outlined">bookmark</mat-icon>-->
+  <!--  </button>-->
+  <button mat-icon-button class="toolbar-icon" aria-label="icon-button with share icon" [matMenuTriggerFor]="languageMenu">
+    <mat-icon fontSet="material-icons-outlined">language</mat-icon>
+  </button>
+  <button mat-icon-button class="toolbar-icon" aria-label="icon-button with share icon">
+    <mat-icon fontSet="material-icons-outlined">notifications</mat-icon>
+  </button>
+  <button mat-icon-button class="toolbar-icon" aria-label="icon-button with share icon">
+    <mat-icon fontSet="material-icons-outlined">email</mat-icon>
+  </button>
+  <button mat-icon-button class="toolbar-icon" aria-label="icon-button with share icon" [matMenuTriggerFor]="userMenu">
+    <mat-icon fontSet="material-icons-outlined">account_circle</mat-icon>
+  </button>
+  <!--  <button class="user-button" mat-mini-fab [matMenuTriggerFor]="userMenu">-->
+  <!--    <mat-icon class="user-button__icon">person</mat-icon>-->
+  <!--  </button>-->
+</ng-template>
+
+<mat-menu #userMenu="matMenu" xPosition="before">
+  <div class="user-menu">
+    <div class="user-menu-title">
+      <h3 class="user-menu-title-name">Peyman Mohtashami</h3>
+      <!--    <a class="user-menu-title__link" [href]="">Flatlogic.com</a>-->
+    </div>
+    <button mat-menu-item class="user-menu__item-title">
+      <mat-icon fontSet="material-icons-outlined" class="user-menu-icon">account_circle</mat-icon>Profile
+    </button>
+<!--    <button mat-menu-item class="user-menu__item-title">-->
+<!--      <mat-icon fontSet="material-icons-outlined" class="user-menu-icon">description</mat-icon>Tasks-->
+<!--    </button>-->
+    <button mat-menu-item class="user-menu__item-title">
+      <mat-icon fontSet="material-icons-outlined" class="user-menu-icon">lock</mat-icon>Reset Password
+    </button>
+    <button mat-menu-item class="user-menu__item-title primary" >
+      <mat-icon fontSet="material-icons-outlined" class="user-menu-icon">logout</mat-icon>Sign Out
+    </button>
+  <!--  <button mat-menu-item class="user-menu__item-title">-->
+  <!--    <mat-icon fontSet="material-icons-outlined" class="user-menu-icon">email</mat-icon>Messages-->
+  <!--  </button>-->
+  <!--  <div class="sign-button-wrapper">-->
+  <!--    <button class="sign-button" mat-flat-button color="primary">Sign out</button>-->
+  <!--  </div>-->
+  </div>
+</mat-menu>
+
+<mat-menu #languageMenu="matMenu" xPosition="before">
+  <button mat-menu-item *ngFor="let lng of languages" [ngClass]="{'active-btn': lng.code === language}" (click)="changeLanguage(lng.code)">{{lng.name}}</button>
+</mat-menu>

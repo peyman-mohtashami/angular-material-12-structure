@@ -1,0 +1,56 @@
+<div class="sidebar-nav">
+  <div class="group-item">
+    <div class="group-item-header">
+      <div class="group-item-header-title primary">Administrator</div>
+      <div class="group-item-header-subtitle accent">Administrator Subtitle</div>
+    </div>
+    <mat-nav-list dense>
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header><mat-icon fontSet="material-icons-outlined">admin_panel_settings</mat-icon>Administrator</mat-expansion-panel-header>
+        <mat-nav-list dense>
+          <mat-list-item [routerLink]="'dashboard'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">work_outline</mat-icon>Dashboard</mat-list-item>
+          <mat-list-item [routerLink]="'table'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">vpn_key</mat-icon>Table</mat-list-item>
+          <mat-list-item [routerLink]="'tree'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">settings</mat-icon>Tree</mat-list-item>
+          <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+            <mat-expansion-panel-header><mat-icon fontSet="material-icons-outlined">settings</mat-icon>Entities</mat-expansion-panel-header>
+            <mat-nav-list dense>
+              <mat-list-item [routerLink]="'address-form'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">group</mat-icon>Address</mat-list-item>
+              <mat-list-item [routerLink]="'drag-n-drop'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">source</mat-icon>Drag & Drop</mat-list-item>
+            </mat-nav-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel [class.mat-elevation-z0]="true" dense disabled expanded>
+            <mat-expansion-panel-header><mat-icon fontSet="material-icons-outlined">settings</mat-icon>Entities</mat-expansion-panel-header>
+            <mat-nav-list dense>
+              <mat-list-item [routerLink]="'address-form'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">group</mat-icon>Address</mat-list-item>
+              <mat-list-item [routerLink]="'drag-n-drop'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">source</mat-icon>Drag & Drop</mat-list-item>
+            </mat-nav-list>
+          </mat-expansion-panel>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-nav-list>
+  </div>
+
+  <div class="group-item">
+    <div class="group-item-header">
+      <div class="group-item-header-title primary">Applications</div>
+      <div class="group-item-header-subtitle accent">Applications Subtitle</div>
+    </div>
+    <mat-nav-list dense>
+      <mat-list-item [routerLink]="'address-form'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">apps</mat-icon>Address Form</mat-list-item>
+      <mat-list-item [routerLink]="'drag-n-drop'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">apps</mat-icon>Drag & Drop</mat-list-item>
+      <mat-list-item [routerLink]="'#'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">apps</mat-icon>Upload Connector</mat-list-item>
+    </mat-nav-list>
+  </div>
+
+  <div class="group-item">
+    <div class="group-item-header">
+      <div class="group-item-header-title primary">Documentation</div>
+      <div class="group-item-header-subtitle accent">Documentation Subtitle</div>
+    </div>
+    <mat-nav-list dense>
+      <mat-list-item [routerLink]="'#'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">settings</mat-icon>Guide Form</mat-list-item>
+      <mat-list-item [routerLink]="'#'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">settings</mat-icon>Docs</mat-list-item>
+      <mat-list-item [routerLink]="'#'" routerLinkActive="active-btn"><mat-icon fontSet="material-icons-outlined">settings</mat-icon>Q/A</mat-list-item>
+    </mat-nav-list>
+  </div>
+</div>
