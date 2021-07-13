@@ -4,8 +4,8 @@
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
     <div class="logo"></div>
-    <app-sidebar-nav-collapsable></app-sidebar-nav-collapsable>
-<!--    <app-sidebar-nav></app-sidebar-nav>-->
+<!--    <app-sidebar-nav-collapsable></app-sidebar-nav-collapsable>-->
+    <app-sidebar-nav></app-sidebar-nav>
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -57,7 +57,9 @@
   <button mat-icon-button class="toolbar-icon" aria-label="icon-button with share icon">
     <mat-icon fontSet="material-icons-outlined">email</mat-icon>
   </button>
+
   <button mat-icon-button class="toolbar-icon" aria-label="icon-button with share icon" [matMenuTriggerFor]="userMenu">
+<!--    <img mat-card-avatar src="assets/images/peyman-avatar.jpg" alt="User Avatar">-->
     <mat-icon fontSet="material-icons-outlined">account_circle</mat-icon>
   </button>
   <!--  <button class="user-button" mat-mini-fab [matMenuTriggerFor]="userMenu">-->
@@ -67,10 +69,11 @@
 
 <mat-menu #userMenu="matMenu" xPosition="before">
   <div class="user-menu">
-    <div class="user-menu-title">
-      <h3 class="user-menu-title-name">Peyman Mohtashami</h3>
+    <span class="user-menu-title" style="vertical-align: middle;">
+<!--      <img mat-card-avatar src="assets/images/peyman-avatar.jpg" alt="User Avatar">-->
+      <span class="user-menu-title-name">Peyman Mohtashami</span>
       <!--    <a class="user-menu-title__link" [href]="">Flatlogic.com</a>-->
-    </div>
+    </span>
     <button mat-menu-item class="user-menu__item-title">
       <mat-icon fontSet="material-icons-outlined" class="user-menu-icon">account_circle</mat-icon>Profile
     </button>

@@ -1,17 +1,15 @@
 <div>
   <mat-card>
-    <mat-card-header style="justify-content: center;">
+    <mat-card-header>
       <mat-card-title><h2>Log In</h2></mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <mat-error *ngIf="loginInvalid">
-          The username and password were not recognized
-        </mat-error>
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
         <mat-form-field class="full-width-input" appearance="outline">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" formControlName="username" required>
-          <mat-icon matPrefix>email</mat-icon>
+          <input matInput placeholder="Email" formControlName="email" required>
+          <mat-icon fontSet="material-icons-outlined" matPrefix>email</mat-icon>
 <!--          <mat-hint>Include area code</mat-hint>-->
           <mat-error>
             Please provide a valid email address
@@ -20,17 +18,22 @@
         <mat-form-field class="full-width-input" appearance="outline">
           <mat-label>Password</mat-label>
           <input matInput type="password" placeholder="Password" formControlName="password" required>
-          <mat-icon matPrefix>lock</mat-icon>
+          <mat-icon fontSet="material-icons-outlined" matPrefix>lock</mat-icon>
 <!--          <mat-hint>Include area code</mat-hint>-->
           <mat-error>
             Please provide a valid password
           </mat-error>
         </mat-form-field>
         <div>
-          <mat-checkbox formControlName="rememberMe" color="primary">Remember Me</mat-checkbox>
+          <mat-checkbox formControlName="remember" color="primary">Remember Me</mat-checkbox>
         </div>
 
-        <button mat-raised-button color="primary" style="width: 100%; margin: 16px 0;">Login</button>
+        <button mat-raised-button color="primary" class="submit-button" [class.spinner]="isLoading" [disabled]="isLoading || !form.valid">Login</button>
+        <mat-error *ngIf="error">
+          {{error}}
+          The username and password were not recognized
+        </mat-error>
+<!--        <button mat-raised-button class="submit-button" color="primary">Login</button>-->
         <p>
           Forgot password?
           <a mat-button color="primary" [routerLink]="['/forgot-password']">Reset</a>

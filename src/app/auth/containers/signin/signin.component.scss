@@ -1,50 +1,27 @@
-//.auth-wrapper {
-//  background-color: #eee;
-//  .ant-card-head {
-//    border-bottom: none;
-//  }
-//  .ant-form-item-explain {
-//    font-size: 12px;
-//  }
-//}
-//
-//.login-form {
-//  width: 300px;
-//}
-//
-//.login-form-margin, .login-form .ant-alert {
-//  margin-bottom: 8px;
-//}
-//
-//.login-form-button {
-//  width: 100%;
-//}
-//
-//.auth-wrapper {
-//  position: relative;
-//  overflow: hidden;
-//  min-width: 100%;
-//  min-height: 100vh;
-//}
-//
-//.header-wrapper {
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//  i {
-//    color: #0ff;
-//    font-size: 22px;
-//    margin-right: 8px;
-//  }
-//}
-//
-
 mat-card {
   width: 350px;
-  //margin: 2em auto;
-  //text-align: center;
+  mat-card-header {justify-content: center;}
+  .submit-button {width: 100%; margin: 16px 0;}
 }
 
-mat-form-field {
-  display: block;
+mat-form-field {display: block;}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner .8s linear infinite;
 }
